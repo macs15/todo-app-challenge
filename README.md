@@ -3,6 +3,8 @@
 
 > *Puedes ver el Sandbox del proyecto en este [link](https://codesandbox.io/s/crazy-wiles-rz5qw)*
 
+> *Puedes ver la app funcionando [acá](https://todo-app-challenge-seven.vercel.app/)*
+
 Una aplicación de **tareas por hacer** con un *CRUD* (*leer, crear, modificar y borrar, respectivamente* ) sencillo sin base de datos por lo que se implementó el uso de **LocalStorage** para administrar las tareas.
 
 
