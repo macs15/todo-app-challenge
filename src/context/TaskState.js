@@ -4,12 +4,11 @@ import { TaskReducer } from './TaskReducer'
 import { ADD_TASK, GET_TASKS, SET_ACTIVE_TASKS, UPDATE_TASK } from './types'
 
 const TaskDefaultState = {
-  tasks: [],
+  tasks: null,
   active: 'all'
 }
 
-const TaskState = ({ children, initialState = TaskDefaultState }) => {
-
+const TaskState = ({ children, initialState }) => {
   const [state, dispatch] = useReducer(TaskReducer, {...TaskDefaultState, ...initialState})
 
   const getTasks = () => {

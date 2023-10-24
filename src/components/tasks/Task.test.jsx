@@ -19,12 +19,17 @@ it('should render successfully', () => {
 })
 
 it('should click the checkbox button to complete the task', async () => {
+  // ARRANGE
   const { getByRole } = render(<Task task={MOCK_TASK} />, {
     initialState: {
-      task: [MOCK_TASK]
+      tasks: [MOCK_TASK]
     }
   })
   const checkbox = getByRole('checkbox')
+
+  // ACT
   await userEvent.click(checkbox)
+
+  // ASSERT
   expect(checkbox.checked).toBeTruthy()
 })
