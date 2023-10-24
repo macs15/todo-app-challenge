@@ -3,13 +3,14 @@ import TaskContext from './TaskContext'
 import { TaskReducer } from './TaskReducer'
 import { ADD_TASK, GET_TASKS, SET_ACTIVE_TASKS, UPDATE_TASK } from './types'
 
-const TaskState = (props) => {
-  const initialState = {
-    tasks: null,
-    active: 'all'
-  }
+const TaskDefaultState = {
+  tasks: [],
+  active: 'all'
+}
 
-  const [state, dispatch] = useReducer(TaskReducer, initialState)
+const TaskState = ({ children, initialState = TaskDefaultState }) => {
+
+  const [state, dispatch] = useReducer(TaskReducer, {...TaskDefaultState, ...initialState})
 
   const getTasks = () => {
     const tasksFromLS = localStorage.getItem('tasks')
@@ -55,7 +56,7 @@ const TaskState = (props) => {
         setActiveTasks
       }}
     >
-      {props.children}
+      {children}
     </TaskContext.Provider>
   )
 }

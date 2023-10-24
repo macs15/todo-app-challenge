@@ -6,28 +6,23 @@ import TaskState from '../context/TaskState'
 import { GlobalStyles } from '../global'
 import { lightTheme } from '../theme'
 
-const AllTheProviders =
-  ({ children }) => {
-    return (
-      <ThemeProvider theme={lightTheme}>
-        <TaskState>
-          <GlobalStyles />
-          <div className="main-container">
-            {children}
-          </div>
-        </TaskState>
-      </ThemeProvider>
-    )
-  }
+const AllTheProviders = ({ children, initialState }) => {
+  return (
+    <ThemeProvider theme={lightTheme}>
+      <TaskState initialState={initialState}>
+        <GlobalStyles />
+        <div className="main-container">{children}</div>
+      </TaskState>
+    </ThemeProvider>
+  )
+}
 
-const customRender = (
-  ui,
-  options
-) =>
+const customRender = (ui, { initialState, ...renderOptions } = {}) =>
   render(ui, {
-    wrapper:
-      AllTheProviders,
-    ...options
+    wrapper: ({ children }) => (
+      <AllTheProviders initialState={initialState}>{children}</AllTheProviders>
+    ),
+    ...renderOptions
   })
 
 // re-export everything

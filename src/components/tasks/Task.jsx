@@ -35,19 +35,10 @@ const Task = ({ task }) => {
       <Checkbox completed={completed} setCompleted={handleChange} />
 
       <div className="capitalize">
-        <p
-          className={`${
-            completed && 'line-through completed-task'
-          } cursor-pointer`}
-        >
-          {text}
-        </p>
+        <p className={`${completed && 'line-through completed-task'} cursor-pointer`}>{text}</p>
       </div>
 
-      <button
-        onClick={handleDeleteTask}
-        className="task-x outline-none focus:outline-none"
-      >
+      <button onClick={handleDeleteTask} className="task-x outline-none focus:outline-none">
         &#215;
       </button>
     </li>
@@ -58,7 +49,7 @@ Task.propTypes = {
   task: PropTypes.shape({
     completed: PropTypes.bool.isRequired,
     text: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired
+    id: PropTypes.string.isRequired
   }).isRequired
 }
 
