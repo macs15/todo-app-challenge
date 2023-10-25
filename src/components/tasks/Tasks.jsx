@@ -20,8 +20,7 @@ const Tasks = () => {
     if (tasks) {
       const filterTasksByCurrent = (current) => {
         if (current === 'active') return tasks.filter((item) => !item.completed)
-        if (current === 'completed')
-          return tasks.filter((item) => item.completed)
+        if (current === 'completed') return tasks.filter((item) => item.completed)
 
         return tasks
       }
@@ -50,7 +49,7 @@ const Tasks = () => {
         className={`md:col-span-4 md:col-start-2 row-start-1 xl:col-span-2 xl:col-start-2 input-bg -mt-8 rounded-md md:rounded-b-none`}
       >
         {totalTasks > 0 ? (
-          <ul>
+          <ul data-testid="tasks-list">
             {filteredTasks.map((task) => (
               <Task key={task.id} task={task} />
             ))}
@@ -61,16 +60,10 @@ const Tasks = () => {
           </div>
         )}
 
-        <MobileFooter
-          tasks={filteredTasks}
-          clearCompleted={clearCompletedTasks}
-        />
+        <MobileFooter tasks={filteredTasks} clearCompleted={clearCompletedTasks} />
       </div>
 
-      <DesktopFooter
-        tasks={filteredTasks}
-        clearCompleted={clearCompletedTasks}
-      />
+      <DesktopFooter tasks={filteredTasks} clearCompleted={clearCompletedTasks} />
     </div>
   )
 }
